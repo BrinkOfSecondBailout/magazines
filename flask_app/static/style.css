@@ -1,0 +1,55 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    width: 800px;
+    justify-content: space-between;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.red {
+    color: red;
+}
+
+.add-form {
+    width: 400px;
+}
+
+.textarea {
+    height: 150px;
+}
+
+.container {
+    display: flex;
+}
+
+.left {
+    width: 250px;
+}
+
+.mags-box {
+    border: 1px solid black;
+    width: 500px;
+    height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.mag-info {
+    border: 1px solid black;
+    width: 400px;
+    height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+}

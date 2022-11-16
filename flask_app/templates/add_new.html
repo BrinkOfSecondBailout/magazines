@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Subscriptions</title>
+</head>
+<body>
+    <div class="navigation">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <h1>Add a Magazine</h1>
+    <div class="red">
+        {% with messages = get_flashed_messages(category_filter=['magazine']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>*{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div class="add-form">
+        <form action="/update_mag" method="post">
+            <input type="hidden" name="user_id" value={{session.user_id}}>
+            <label for="name">Title:</label>
+            <input type="text" name="name">
+            <br><br>
+            <label for="descriptions">Descriptions:</label>
+            <input type="textarea" class="textarea" name="descriptions">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

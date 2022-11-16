@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Subscriptions</title>
+</head>
+<body>
+    <div class="navigation">
+        <a href="/new">Add Magazine</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <h1>Update User</h1>
+    <div class="container">
+        <div class="left">
+            <div class="red">
+                {% with messages = get_flashed_messages(category_filter=['edit']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>*{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <form action="/update_account/{{user_info.id}}" method="post">
+                <input type="hidden" name="id" value="{{user_info.id}}">
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" value="{{user_info.first_name}}"><br><br>
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" value="{{user_info.last_name}}"><br><br>
+                <label for="email">Email:</label>
+                <input type="text" name="email" value="{{user_info.email}}"><br><br>
+                <input type="submit" value="Update">
+            </form>
+        </div>
+        <div class="right">
+            <h1>User's Magazines</h1>
+            <div class="mag-info">
+                {% for magazine in all_magazines %}
+                    <p><b>{{magazine.name}}</b></p> <a href="/destroy/{{magazine.magazine_id}}">delete</a>
+                    <p>{{magazine.num_of_subscribers}} subscribers</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

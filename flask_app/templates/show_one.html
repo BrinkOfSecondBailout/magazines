@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Subscriptions</title>
+</head>
+<body>
+    <div class="navigation">
+        <a href="/new">Add Magazine</a>
+        <a href="/account/{{session.user_id}}">Account</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <h1>{{one_magazine.name}}</h1>
+    <div class="mag-descriptions">
+        <p>Added by <b>{{one_magazine.creator.first_name}} {{one_magazine.creator.last_name}}</b></p>
+        <p><u>Descriptions:</u></p>
+        <p>{{one_magazine.descriptions}}</p>
+        <p><u>Subscribers:</u></p>
+        {% for subscriber in all_subscribers %}
+            <p>{{subscriber.first_name}} {{subscriber.last_name}}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

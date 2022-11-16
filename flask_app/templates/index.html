@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Subscriptions</title>
+</head>
+
+<body>
+    <h1 class="purple">Magazine Subscriptions</h1>
+    <div class="container">
+        <div class="left">
+            <h2>Register</h2>
+            <div class="red">
+                {% with messages = get_flashed_messages(category_filter=['registration']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>*{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <form action="/process/registration" method="post">
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name"><br><br>
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" name="email"><br><br>
+                <label for="password">Password:</label>
+                <input type="password" name="password"><br><br>
+                <label for="confirm_password">Confirm PW:</label>
+                <input type="password" name="confirm_password"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="right">
+            <h2>Log in</h2>
+            <div class="red">
+                {% with messages = get_flashed_messages(category_filter=['login']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <form action="/process/login" method="post">
+                <label for="email">Email:</label>
+                <input type="email" name="email"><br><br>
+                <label for="password">Password:</label>
+                <input type="password" name="password"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
